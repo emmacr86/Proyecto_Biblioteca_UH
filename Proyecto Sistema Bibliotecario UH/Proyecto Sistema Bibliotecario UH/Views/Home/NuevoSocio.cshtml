@@ -1,0 +1,91 @@
+﻿@model Proyecto_Sistema_Bibliotecario_UH.Models.Usuario
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sistema Bibliotecario UH | Ingresar Socio</title>
+    <link rel="Icon" href="~/Imagenes/icono.ico">
+    <link href="~/Css/style-principal.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header text-white">
+                    <img src="~/Imagenes/uhLogo.png" id="logo" />
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <main>
+        <!-- section -->
+        <section>
+            @using (Html.BeginForm())
+            {
+                <div class="container-fluid text-center">
+                    <h3 class="text-white text-center">Ingrese los siguientes datos:<br></h3>
+                    <div class="row content">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="main col-sm-3 text-left text-white">
+                            <div class="form-group">
+                                <label>Ingrese la cédula del socio:</label>
+                                @Html.TextBoxFor(x => x.cedulaUsuario, new { @class = "form-control", @placeholder = "Cédula", @required = "required", @type = "number" })
+                            </div>
+                            <div class="form-group text-left text-white">
+                                <label>Ingrese el nombre del socio:</label>
+                                @Html.TextBoxFor(x => x.nombreUsuario, new { @class = "form-control", @placeholder = "Ingrese nombre", @required = "required" })
+                            </div>
+                            <div class="form-group text-left text-white">
+                                <label>Ingrese la dirección del socio:</label>
+                                @Html.TextBoxFor(x => x.direccionUsuario, new { @class = "form-control", @placeholder = "Ingrese dirección", @required = "required" })
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group text-left text-white">
+                                <label>Ingrese una contraseña para el socio:</label>
+                                @Html.TextBoxFor(x => x.contrasenaUsuario, new { @class = "form-control", @placeholder = "Ingrese contraseña", @required = "required" })
+                            </div>
+                            <div class="form-group text-left text-white">
+                                <label>Ingrese los apellidos del socio:</label>
+                                @Html.TextBoxFor(x => x.apellidosUsuario, new { @class = "form-control", @placeholder = "Ingrese apellidos", @required = "required" })
+                            </div>
+                            <div class="form-group text-left text-white">
+                                <label>Hacer "Click" para crear cuenta</label>
+                                <button type="submit" value="save" class="btn btn-success form-control">Crear Cuenta</button><br />
+                                <label class="text-white">@ViewBag.mensaje</label>
+                            </div>                           
+                            <div class="form-group">
+                                <input type="button" value="Volver al Menú" class="btn btn-danger form-control" onclick="@("window.location.href='" + @Url.Action("MenuSocio", "Home") + "'");" />
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                    </div>
+                </div>
+            }
+        </section>
+        <!-- section -->
+    </main>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright:
+            <a href="https://uh.ac.cr/" target="_blank"> Universidad Hispanoamericana</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+</body>
+</html>

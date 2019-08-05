@@ -1,0 +1,101 @@
+﻿@model Proyecto_Sistema_Bibliotecario_UH.Models.Libros
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sistema Bibliotecario UH | Ingresar Libro</title>
+    <link rel="Icon" href="~/Imagenes/icono.ico">
+    <link href="~/Css/style-principal.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header text-white">
+                    <img src="~/Imagenes/uhLogo.png" id="logo" />
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <main>
+        <!-- section -->
+        <section>
+            @using (Html.BeginForm("GestionLibrosInsertar", "Home", FormMethod.Post))
+            {
+                <div class="container-fluid text-center">
+                    <h3 class="text-white text-center">Ingrese los siguientes datos:<br></h3>
+                    <div class="row content">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="main col-sm-3 text-left text-white">
+                            <div class="form-group">
+                                <label>Ingrese el título del libro:</label>
+                                @Html.TextBoxFor(x => x.tituloLibro, new { @class = "form-control", @placeholder = "Título", @required = "required" })
+                            </div>
+
+                            <div class="form-group text-left text-white">
+                                <label>Ingrese la cantidad del libro:</label>
+                                @Html.TextBoxFor(x => x.cantidadLibro, new { @class = "form-control", @placeholder = "Ingrese cantidad", @required = "required", @type = "number" })
+                            </div>
+                            <div class="form-group">
+                            
+                                <input type="button" value="Volver al Menú" class="btn btn-danger form-control" onclick="@("window.location.href='" + @Url.Action("GestionLibros", "Home") + "'");" />
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group text-left text-white">
+                                <label>Ingrese el nombre del autor:</label>
+                                @Html.TextBoxFor(x => x.autorLibro, new { @class = "form-control", @placeholder = "Ingrese autor", @required = "required" })
+                            </div>
+                            <div class="form-group text-left text-white">
+                                <label>Seleccione asignatura:</label>
+                                @Html.DropDownListFor(x => x.asignaturaLibro, new[]
+                                    {
+                                        new SelectListItem() { Text= "Fantasia"},
+                                        new SelectListItem() { Text= "Terror"},
+                                        new SelectListItem() { Text= "Educación"},
+                                        new SelectListItem() { Text= "Historia"},
+                                        new SelectListItem() { Text= "Idiomas"},
+                                        new SelectListItem() { Text= "Novelas"},
+                                        new SelectListItem() { Text= "Comics"},
+                                        new SelectListItem() { Text= "Niños"},
+                                        new SelectListItem() { Text= "Hogar"},
+                                        new SelectListItem() { Text= "Revistas"}},
+                                        new { @class = "form-control", @required = "required" })
+                            </div>
+                            <div class="form-group text-left text-white">
+                            
+                                <button type="submit" value="save" class="btn btn-success form-control">Guardar Libro</button><br />
+                                <label class="text-white">@ViewBag.mensaje</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                    </div>
+                </div>
+            }
+        </section>
+        <!-- section -->
+    </main>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright:
+            <a href="https://uh.ac.cr/" target="_blank"> Universidad Hispanoamericana</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+</body>
+</html>

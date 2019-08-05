@@ -1,0 +1,101 @@
+﻿@model Proyecto_Sistema_Bibliotecario_UH.Models.Usuario
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sistema Bibliotecario UH | Modificar</title>
+    <link rel="Icon" href="~/Imagenes/icono.ico">
+    <link href="~/Css/style-principal.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header text-white">
+                    <img src="~/Imagenes/uhLogo.png" id="logo" />
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <main>
+        <!-- section -->
+        <section>
+            <div class="container-fluid text-center">
+                <div class="row content">
+                    <div class="col-sm-12 align-items-center">
+                        <h6 class="text-white">Usuarios Disponibles:<br> </h6>
+                    </div>
+                </div>
+                <div class="row content">
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-10 text-center text-white">
+                        <table class="table-hover" width="400" cellpadding="3" cellspacing="0" border="0" align="center">
+                            <thead>
+                                <tr class="text-center">
+                                    <th class="text-center">Cédula</th>
+                                    <th class="text-center">Nombre</th>
+                                    <th class="text-center">Apellido</th>
+                                    <th class="text-center">Dirección</th>
+                                    <th class="text-center">Tipo de Usuario</th>
+                                    <th class="text-center">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                @for (int i = 0; i < Model.tabla.Rows.Count; i++)
+                                {
+                                    using (Html.BeginForm("ModificarSocio", "Home", new { cedula = Model.tabla.Rows[i][0] }))
+                                    {
+                                        <tr>
+                                            <td class="text-center">@Model.tabla.Rows[i][0]</td>
+                                            <td class="text-center">@Model.tabla.Rows[i][2]</td>
+                                            <td class="text-center">@Model.tabla.Rows[i][3]</td>
+                                            <td class="text-center">@Model.tabla.Rows[i][4]</td>
+                                            <td class="text-center">@Model.tabla.Rows[i][5]</td>
+                                            <td class="text-center">
+                                                <input type="submit" value="Modificar" class="btn btn-danger" onclick="return confirm('Desea Modificar el registro del usuario @Model.tabla.Rows[i][2] ?')" />
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-1">
+                    </div>
+                </div>
+                <div class="row content">
+                    <div class="col-sm-12 text-center text-white">
+                        <div class="form-group align-items-center">
+                            <br>
+                            <input type="button" value="Regresar al Menú" class="btn btn-primary" onclick="@("window.location.href='" + @Url.Action("MenuSocio", "Home") + "'");" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section -->
+    </main>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright:
+            <a href="https://uh.ac.cr/" target="_blank"> Universidad Hispanoamericana</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+</body>
+</html>
+

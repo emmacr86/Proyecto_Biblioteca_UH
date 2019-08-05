@@ -1,0 +1,90 @@
+﻿@model Proyecto_Sistema_Bibliotecario_UH.Models.Usuario
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Modificar</title>
+    <link rel="Icon" href="~/Imagenes/icono.ico">
+    <link href="~/Css/style-principal.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header text-white">
+                    <img src="~/Imagenes/uhLogo.png" id="logo" />
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <main>
+        <!-- section -->
+        <section>
+            @using (Html.BeginForm("Modificar", "Home", FormMethod.Post))
+            {
+                <div class="container-fluid text-center">
+                    <h3 class="text-white text-center">Actualice los siguientes datos del usuario:<br></h3>
+                    <div class="row content">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="main col-sm-3 text-left text-white">
+                            <div class="form-group text-left text-white">
+                                <label>Nombre del socio:</label>
+                                @Html.TextBoxFor(x => x.nombreUsuario, new { @class = "form-control", @placeholder = "Ingrese nombre", @required = "required" })
+                            </div>
+                            <div class="form-group text-left text-white">
+                                <label>Apellidos del socio:</label>
+                                @Html.TextBoxFor(x => x.apellidosUsuario, new { @class = "form-control", @placeholder = "Ingrese apellidos", @required = "required" })
+                            </div> 
+                            <div class="form-group">
+                                <label>Regresar</label>
+                                <input type="button" value="Volver al Menú" class="btn btn-danger form-control" onclick="@("window.location.href='" + @Url.Action("MenuSocio", "Home") + "'");" />
+                            </div>                         
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group text-left text-white">
+                                <label>Contraseña para el socio:</label>
+                                @Html.TextBoxFor(x => x.contrasenaUsuario, new { @class = "form-control", @placeholder = "Ingrese contraseña", @required = "required" })
+                            </div>
+                            <div class="form-group text-left text-white">
+                                <label>Dirección del socio:</label>
+                                @Html.TextBoxFor(x => x.direccionUsuario, new { @class = "form-control", @placeholder = "Ingrese dirección", @required = "required" })
+                            </div>                         
+                            <div class="form-group text-left text-white">
+                                <label>Hacer "Click" para actualizar cuenta</label>
+                                <button type="submit" value="save" class="btn btn-success form-control">Actualizar Cuenta</button><br />
+                                <label class="text-white">@ViewBag.mensaje</label>
+                            </div>                         
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                    </div>
+                </div>
+            }
+        </section>
+        <!-- section -->
+    </main>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright:
+            <a href="https://uh.ac.cr/" target="_blank"> Universidad Hispanoamericana</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+</body>
+</html>
+
+

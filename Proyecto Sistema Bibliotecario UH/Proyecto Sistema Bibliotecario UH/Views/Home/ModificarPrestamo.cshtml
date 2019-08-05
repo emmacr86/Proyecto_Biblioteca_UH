@@ -1,0 +1,84 @@
+﻿@model Proyecto_Sistema_Bibliotecario_UH.Models.Prestamos
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Modificar</title>
+    <link rel="Icon" href="~/Imagenes/icono.ico">
+    <link href="~/Css/style-principal.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header text-white">
+                    <img src="~/Imagenes/uhLogo.png" id="logo" />
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <main>
+        <!-- section -->
+        <section>
+            @using (Html.BeginForm("ModificarPrestamo", "Home", FormMethod.Post))
+            {
+                <div class="container-fluid text-center">
+                    <h3 class="text-white text-center">Actualice los siguientes datos del prestamo:<br></h3>
+                    <div class="row content">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="main col-sm-3 text-left text-white">
+                            <div class="form-group text-left text-white">
+                                <label>Nombre del usuario:</label>
+                                @Html.TextBoxFor(x => x.nombreSocioPrestamo, new { @class = "form-control", @placeholder = "Ingrese Nombre", @required = "required" })
+                            </div>
+                            <div class="form-group text-left text-white">
+                                <label>Nombre del libro:</label>
+                                @Html.TextBoxFor(x => x.nombreLibroPrestamo, new { @class = "form-control", @placeholder = "Ingrese el nombre del libro", @required = "required" })
+                            </div>
+                            <div class="form-group">
+                                <label>Regresar</label>
+                                <input type="button" value="Volver al Menú" class="btn btn-danger form-control" onclick="@("window.location.href='" + @Url.Action("GestionPrestamo", "Home") + "'");" />
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group text-left text-white">
+                                <label>Cantidad de libros:</label>
+                                @Html.TextBoxFor(x => x.cantidadSolicitadaLibroPrestamo, new { @class = "form-control", @placeholder = "Ingrese cantidad", @required = "required", @Type = "number" })
+                            </div>
+                            <div class="form-group text-left text-white">
+                                <label>Hacer "Click" para actualizar libro</label>
+                                <button type="submit" value="save" class="btn btn-success form-control">Actualizar Prestamo</button><br />
+                                <label class="text-white">@ViewBag.mensaje</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                    </div>
+                </div>
+            }
+        </section>
+        <!-- section -->
+    </main>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright:
+            <a href="https://uh.ac.cr/" target="_blank"> Universidad Hispanoamericana</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+</body>
+</html>
